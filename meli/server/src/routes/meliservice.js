@@ -1,3 +1,17 @@
+
+/**
+ * 
+ * Rutas 
+ * 
+ * Dos expone Dos endpoints
+ * 
+ * /items
+ * Retorne un objeto con 4 items con el parametro dado por el request query
+ * 
+ * /items/:id
+ * Retorna un objeto Item mediante el Id dado por el request param id
+ */
+
 import { Router, response, request } from 'express';
 import axios from 'axios';
 import { formatResponseSearching, formatResponseProduct } from '../helpers/utils';

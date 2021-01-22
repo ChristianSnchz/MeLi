@@ -1,5 +1,9 @@
 
-
+/***
+ * @function formatResponseSearching
+ * @param {string} data respuesta del app de mercado libre de search
+ * @returns {object} response con el formato de la prueba
+ */
 export const formatResponseSearching = ( data ) => {
 
   const response ={};
@@ -9,6 +13,13 @@ export const formatResponseSearching = ( data ) => {
   return response;  
 }
 
+
+/***
+ * @function formatResponseProduct
+ * @param {string} item respuesta del app de mercado libre por id de item
+ * @param {string} description respuesta del app de mercado libre descripcion de item por id
+ * @returns {object} response con el formato de la prueba
+ */
 export const formatResponseProduct = ( item , description ) => {
   const response ={};
   response.author = author();
@@ -17,8 +28,18 @@ export const formatResponseProduct = ( item , description ) => {
 }
 
 
+/***
+ * @function author 
+ * @returns {object} response con el formato de la prueba
+ */
 const author = () => ({ name: 'Christian', lastname: 'Sanchez'});
 
+
+/***
+ * @function items
+ * @param {string} results respuesta del app de mercado libre por id de item ( property items )
+ * @returns {object} response con el formato de la prueba
+ */
 const items = ( results ) => {
 
   const products = [];
@@ -41,6 +62,12 @@ const items = ( results ) => {
   return products;
 }
 
+
+/***
+ * @function categories
+ * @param {string} categories respuesta del app de mercado libre por id de item (property categories)
+ * @returns {object} response con el formato de la prueba
+ */
 const categories = ( categories ) => {
 
   const breadcum = [];
@@ -57,6 +84,13 @@ const categories = ( categories ) => {
   
 }
 
+
+/***
+ * @function makeItem
+ * @param {string} item respuesta del app de mercado libre por id de item
+ * @param {string} description respuesta del app de mercado libre descripcion de item por id
+ * @returns {object} response con el formato de la prueba
+ */
 const makeItem = ( item, description ) => {
 
   const auxItem = {
