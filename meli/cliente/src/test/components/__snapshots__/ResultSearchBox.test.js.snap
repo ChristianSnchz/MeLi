@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test in ResultSearchBox component should match with snaphot 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "marginLeft": "16rem",
+        "marginTop": "1rem",
+      }
+    }
+  />,
+  "",
+]
+`;

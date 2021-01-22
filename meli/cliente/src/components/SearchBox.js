@@ -1,20 +1,26 @@
+
+/**
+ *  Header Caja de busqueda
+ * 
+ * Encargado de llevar a la pagina de / mediante el icono de mercado libre
+ * Pasar la consulta que el usuario ingrese por el input text al componente ResultSearchBox
+ * 
+*/
+
 import React, { useState } from 'react';
 import "../styles/styles.scss";
 import logo from '../assets/Logo_ML.png';
 import lupa from '../assets/ic_Search.png';
 import { useHistory } from 'react-router-dom';
 
-
 export const SearchBox = () => {
 
   const history = useHistory();
-
   const [search, setsearch] = useState('');
 
   const searching = (e) => {
     e.preventDefault();
-    history.push(`/items?search=${search}`);
-    
+    history.push(`/items?search=${search}`);    
   }
 
   const handleInputChange = (e) => {        

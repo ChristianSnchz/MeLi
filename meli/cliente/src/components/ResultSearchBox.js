@@ -1,38 +1,26 @@
+
+/**
+ * Componente Resultados de Busqueda
+ * 
+ * Encargado de mostrar dinamicamente los resultados obtenidos por la consulta al servidor
+ * de la query obtenida por el Header (SearchBox) Mediante la funcion SearchService 
+ * 
+ * 
+ * @function SearchService 
+ * @param {string} param query de la caja de busqueda del header
+ * 
+ */
+
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../styles/styles.scss';
 import shipping from '../assets/ic_shipping.png';
+import axios from 'axios';
 
 export const ResultSearchBox = () => {
-
-
-  const item = {
-    id: "MMMM458748",
-    title: "iphone",
-    price: {
-    currency: "USD",
-    amount :12000,
-    decimals: 1
-    },
-    picture: "mm",
-    condition: "no se",
-    free_shipping: true
-    }
-
-  const item2 = {
-    id: "MMMM458738",
-    title: "iphone",
-    price: {
-    currency: "USD",
-    amount :12000,
-    decimals: 1
-    },
-    picture: "mm",
-    condition: "no se",
-    free_shipping: false
-    }
     
-  const [itemsSearch, setitemsSearch] = useState([item, item2]);
+  const [itemsSearch, setitemsSearch] = useState([]);
+  const [categories, setCategories] = useState([]);
   const history = useHistory();
 
   useEffect(() => { 
@@ -42,8 +30,19 @@ export const ResultSearchBox = () => {
       history.push('/');
     }    
     
-  }, [history.location.search])
+    searchService(search.substring( 8,search.length ));            
+  }, [history.location.search]);
 
+
+  const searchService = async ( param ) => {    
+    const apiurl = 'http://localhost:4000/api';    
+    const uri = `${apiurl}/items?q=${param}`;    
+    const response = await axios.get(uri);
+    const { data } = response;  
+    console.log(data);
+    setCategories(data.categories);
+    setitemsSearch(data.items);      
+  }
 
   const goToDetail = (item) => {
     console.log(item.id);
@@ -52,17 +51,23 @@ export const ResultSearchBox = () => {
   }
 
   return (
-    <>
-
-    <div style={{ marginTop:'2rem' }}>
-
+    <>    
+    <div style={{ marginTop:'1rem',  display:'flex', marginLeft:'16rem' }}>      
+          {categories.map( (category) => {            
+            if(category === categories[categories.length -1] ){
+              return <p style={{marginLeft:'1rem'}} > { `${category}`}</p>
+            }else{
+              return <p style={{marginLeft:'1rem'}}> { `${category}   >`}</p>
+            }            
+          }) 
+          }      
     </div>
       {       
         itemsSearch.map( (item) => {
             return  <div key={item.id} className="items_container_two" > 
               <div className="items_container" onClick={ () => goToDetail(item) } >                
                     <img 
-                      src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone11-select-2019-family_GEO_EMEA?wid=882&hei=1058&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1567022219953"
+                      src={item.picture}
                       className="items_img"
                       />
 
