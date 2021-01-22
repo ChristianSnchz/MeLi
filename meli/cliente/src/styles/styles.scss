@@ -1,6 +1,6 @@
 @import './base/settings';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
 
 body, html {
   background-color: $secondary;
@@ -85,7 +85,57 @@ body, html {
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   width: 55vw; 
-  display: flex;  
+  display: flexbox;  
   background-color: #ffffff;  
+}
+.detail_image{
+  width: 30vw;
+}
+.detail_box {  
+  margin-left: 3rem;  
+}
 
+
+.detail_subtittle {
+  font-weight: 900;
+  font-size: 14px;  
+}
+
+.detail_tittle {  
+  font-size: 24px;
+  margin-top: 0rem;
+  font-family: 'Noto Sans JP';
+  font-weight: bold;
+}
+
+.detail_price{
+  font-weight: 900;
+  font-size: 36px;
+  margin-top: 0rem;
+  margin-bottom: 1rem;  
+}
+
+.detail_button{
+  width: 17vw;
+  height: 40px;
+  border: none;
+  color: #ffffff;
+  background-color: $button;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.detail_description_tittle {
+  font-weight: bold;
+  font-size: 23px;
+  margin-left: 2rem;
+}
+
+.detail_description {
+  font-weight: 600;
+  font-size: 16px;
+  margin-right: 8rem;
+  margin-left: 2rem;
+  color:$letter;
+  letter-spacing: 0.03em;
 }
